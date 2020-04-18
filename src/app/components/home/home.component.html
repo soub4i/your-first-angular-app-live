@@ -1,0 +1,46 @@
+<form (submit)="onSubmit()" class="form-signin">
+  <label for="inputEmail" class="sr-only">Country</label>
+
+  <input
+    type="email"
+    id="inputEmail"
+    class="form-control"
+    placeholder="Country"
+    required
+    autofocus
+    [(ngModel)]="country"
+    name="my-country"
+  />
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">
+    Check
+  </button>
+  <br />
+
+  <ul *ngIf="$result | async" class="list-group">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      Total cases
+      <span class="badge badge-primary badge-pill">
+        {{ ($result | async)?.cases }}
+      </span>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      Recovered
+      <span class="badge badge-success badge-pill">
+        {{ ($result | async)?.recovered }}
+      </span>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      Deaths
+      <span class="badge badge-danger badge-pill">
+        {{ ($result | async)?.deaths }}
+      </span>
+    </li>
+  </ul>
+</form>
